@@ -1,0 +1,11 @@
+const path = require('path');
+const fs = require('fs');
+
+const filePath = path.join(process.cwd(), 'data', 'yourfile.json');
+const fileContent = fs.readFileSync(filePath, 'utf-8');
+Or if serving via Express:
+
+app.use(express.static('public'));
+app.get('/data/:filename', (req, res) => {
+  res.sendFile(path.join(__dirname, 'data', req.params.filename));
+});
